@@ -1,0 +1,203 @@
+:root {
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-image: linear-gradient(to bottom, #000000, darkblue);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  box-sizing: border-box;
+  color: white;
+  padding: 0 18px;
+}
+
+/* Photo and overlay */
+.photo-wrap {
+  position: relative;
+  width: clamp(120px, 22vw, 200px);
+  height: clamp(120px, 22vw, 200px);
+  margin-top: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  background: transparent;
+}
+
+.photo-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.photo-wrap #myfoto {
+  z-index: 1;
+}
+
+.photo-wrap .logo-gradient {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  object-fit: cover;
+  background: transparent;
+  z-index: 2;
+  transition: opacity 0.22s ease;
+}
+
+.photo-wrap:hover .logo-gradient {
+  opacity: 1;
+}
+
+.photo-wrap:hover #myfoto {
+  opacity: 0;
+}
+
+/* Presentation */
+#presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+  text-align: center;
+}
+
+#presentation h1 {
+  margin: 8px 0 4px;
+  line-height: 1.05;
+  font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+}
+
+#presentation h3 {
+  margin: 0;
+  margin-top: 2px;
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  font-weight: 500;
+  color: rgba(220, 220, 255, 0.95);
+}
+
+/* Links / list */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Support anchors inside or outside li */
+ul a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #000;
+  margin: 10px 0;
+  border-radius: 8px;
+  padding: clamp(15px, 2.4vw, 18px) clamp(16px, 4.5vw, 24px);
+  font-size: clamp(1rem, 2.6vw, 1.1em);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.18s ease;
+  color: white;
+  font-weight: 700;
+  width: 100%;
+  max-width: clamp(260px, 50vw, 360px);
+  box-sizing: border-box;
+}
+
+ul a:hover {
+  background-image: linear-gradient(
+    to right,
+    rgb(160, 76, 234),
+    rgb(0, 0, 150)
+  );
+  transform: translateX(4px);
+}
+
+svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+#contact-info {
+  margin-top: 20px;
+  color: white;
+  background-color: rgb(38, 38, 255);
+  padding: 12px 18px;
+  border-radius: 8px;
+  max-width: 360px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    background-color 0.18s ease;
+  cursor: pointer;
+}
+
+#contact-info a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+#contact-info:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  background-color: rgb(60, 60, 255);
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+  .photo-wrap {
+    margin-top: 12px;
+  }
+  #presentation {
+    gap: 4px;
+  }
+  ul {
+    margin-top: 12px;
+  }
+  ul a {
+    padding: 10px 16px;
+    max-width: 320px;
+    font-size: 1rem;
+  }
+  #contact-info {
+    margin-top: 14px;
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  #presentation h1 {
+    font-size: 1.4rem;
+  }
+  .photo-wrap {
+    width: 140px;
+    height: 140px;
+  }
+}
